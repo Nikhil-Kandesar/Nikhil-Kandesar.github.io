@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nikhil Kandesar - Blockchain Developer & Smart Contract Engineer with 3+ years building production Web3 DApps, DeFi protocols, and smart contracts across 15+ blockchains.">
+    <title>Nikhil Kandesar</title>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        zinc: {
+                            950: '#09090b',
+                            900: '#18181b',
+                            850: '#1f1f23',
+                            800: '#27272a',
+                            750: '#2e2e33',
+                            700: '#3f3f46',
+                            600: '#52525b',
+                            500: '#71717a',
+                            400: '#a1a1aa',
+                            300: '#d4d4d8',
+                            200: '#e4e4e7',
+                            100: '#f4f4f5',
+                            50: '#fafafa',
+                        },
+                        accent: {
+                            DEFAULT: '#6366f1',
+                            glow: 'rgba(99, 102, 241, 0.15)',
+                            soft: 'rgba(99, 102, 241, 0.08)',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: #09090b;
+            color: #fafafa;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #09090b; }
+        ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
+        .glass {
+            background: rgba(24, 24, 27, 0.6);
+            backdrop-filter: blur(20px) saturate(1.2);
+            -webkit-backdrop-filter: blur(20px) saturate(1.2);
+        }
+        .glass-card {
+            background: rgba(24, 24, 27, 0.5);
+            backdrop-filter: blur(16px) saturate(1.1);
+            -webkit-backdrop-filter: blur(16px) saturate(1.1);
+            border: 1px solid rgba(63, 63, 70, 0.4);
+        }
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            pointer-events: none;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+        }
+        .animate-float { animation: float 8s ease-in-out infinite; }
+        .animate-float-delay { animation: float 10s ease-in-out infinite 2s; }
+        .animate-float-slow { animation: float 12s ease-in-out infinite 4s; }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+        const { motion, useInView, AnimatePresence } = window.Motion;
+
+        // ===== LUCIDE ICONS (inline SVG components) =====
+        const Icons = {
+            Cube: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m21 16-9 5-9-5"/><path d="m3 16 9 5 9-5"/><path d="M12 2 3 7l9 5 9-5-9-5Z"/></svg>,
+            Shield: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>,
+            Coins: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="M7 6h1v4"/><path d="m16.71 13.88.7.71-2.82 2.82"/></svg>,
+            Link: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>,
+            Code: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>,
+            Server: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>,
+            Database: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>,
+            FlaskConical: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 2v7.31"/><path d="M14 2v7.31"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg>,
+            TrendingUp: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>,
+            Zap: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>,
+            Mail: () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>,
+            Phone: () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>,
+            Linkedin: () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>,
+            Github: () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>,
+            ExternalLink: () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>,
+            ChevronRight: () => <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>,
+            Menu: () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>,
+            X: () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>,
+            GraduationCap: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>,
+        };
+
+        // ===== ANIMATION VARIANTS =====
+        const fadeUp = {
+            hidden: { opacity: 0, y: 30 },
+            visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
+        };
+        const fadeIn = {
+            hidden: { opacity: 0 },
+            visible: { opacity: 1, transition: { duration: 0.8 } }
+        };
+        const staggerContainer = {
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } }
+        };
+        const scaleUp = {
+            hidden: { opacity: 0, scale: 0.95 },
+            visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }
+        };
+
+        // ===== REVEAL ON SCROLL COMPONENT =====
+        function Reveal({ children, className = "", delay = 0 }) {
+            const ref = useRef(null);
+            const isInView = useInView(ref, { once: true, margin: "-50px" });
+            return (
+                <motion.div
+                    ref={ref}
+                    initial="hidden"
+                    animate={isInView ? "visible" : "hidden"}
+                    variants={fadeUp}
+                    transition={{ delay }}
+                    className={className}
+                >
+                    {children}
+                </motion.div>
+            );
+        }
+
+        // ===== NAVBAR =====
+        function Navbar() {
+            const [scrolled, setScrolled] = useState(false);
+            const [mobileOpen, setMobileOpen] = useState(false);
+
+            useEffect(() => {
+                const handleScroll = () => setScrolled(window.scrollY > 20);
+                window.addEventListener("scroll", handleScroll);
+                return () => window.removeEventListener("scroll", handleScroll);
+            }, []);
+
+            const navLinks = [
+                { label: "About", href: "#about" },
+                { label: "Skills", href: "#skills" },
+                { label: "Experience", href: "#experience" },
+                { label: "Projects", href: "#projects" },
+                { label: "Contact", href: "#contact" },
+            ];
+
+            return (
+                <motion.nav
+                    initial={{ y: -100 }}
+                    animate={{ y: 0 }}
+                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                    className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+                        scrolled 
+                            ? "glass border-b border-zinc-800/50" 
+                            : "bg-transparent"
+                    }`}
+                >
+                    <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+                        <a href="#" className="flex items-center gap-2.5 group">
+                            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center text-white text-sm font-bold shadow-lg shadow-indigo-500/20 group-hover:shadow-indigo-500/40 transition-shadow duration-300">
+                                NK
+                            </div>
+                            <span className="text-zinc-100 font-semibold text-sm tracking-tight hidden sm:block">Nikhil Kandesar</span>
+                        </a>
+
+                        <div className="hidden md:flex items-center gap-8">
+                            {navLinks.map((link) => (
+                                <a
+                                    key={link.label}
+                                    href={link.href}
+                                    className="text-zinc-400 text-sm font-medium hover:text-zinc-100 transition-colors duration-300 relative group"
+                                >
+                                    {link.label}
+                                    <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-gradient-to-r from-indigo-500 to-violet-500 group-hover:w-full transition-all duration-300" />
+                                </a>
+                            ))}
+                        </div>
+
+                        <div className="flex items-center gap-3">
+                            <a
+                                href="mailto:nikhilkandesar209@gmail.com?subject=Let's Connect&body=Hi Nikhil,%0D%0A%0D%0AI came across your portfolio and would like to discuss..."
+                                className="hidden sm:flex items-center gap-2 px-4 py-2 text-sm font-medium text-zinc-900 bg-zinc-100 rounded-lg hover:bg-white hover:scale-[1.02] transition-all duration-300"
+                            >
+                                Get In Touch
+                            </a>
+                            <button
+                                onClick={() => setMobileOpen(!mobileOpen)}
+                                className="md:hidden text-zinc-400 hover:text-zinc-100 transition-colors p-1"
+                            >
+                                {mobileOpen ? <Icons.X /> : <Icons.Menu />}
+                            </button>
+                        </div>
+                    </div>
+
+                    <AnimatePresence>
+                        {mobileOpen && (
+                            <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: "auto" }}
+                                exit={{ opacity: 0, height: 0 }}
+                                className="md:hidden glass border-t border-zinc-800/50 overflow-hidden"
+                            >
+                                <div className="px-6 py-4 flex flex-col gap-3">
+                                    {navLinks.map((link) => (
+                                        <a
+                                            key={link.label}
+                                            href={link.href}
+                                            onClick={() => setMobileOpen(false)}
+                                            className="text-zinc-400 text-sm font-medium hover:text-zinc-100 transition-colors py-2"
+                                        >
+                                            {link.label}
+                                        </a>
+                                    ))}
+                                    <a
+                                        href="mailto:nikhilkandesar209@gmail.com?subject=Let's Connect&body=Hi Nikhil,%0D%0A%0D%0AI came across your portfolio and would like to discuss..."
+                                        className="mt-2 flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium text-zinc-900 bg-zinc-100 rounded-lg"
+                                    >
+                                        Get In Touch
+                                    </a>
+                                </div>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </motion.nav>
+            );
+        }
+
+        // ===== HERO SECTION =====
+        function Hero() {
+            return (
+                <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+                    {/* Background Orbs */}
+                    <div className="absolute inset-0 pointer-events-none">
+                        <div className="glow-orb w-[500px] h-[500px] bg-indigo-600/10 top-[-10%] left-[-10%] animate-float" />
+                        <div className="glow-orb w-[400px] h-[400px] bg-violet-600/10 top-[30%] right-[-5%] animate-float-delay" />
+                        <div className="glow-orb w-[350px] h-[350px] bg-emerald-600/8 bottom-[-5%] left-[20%] animate-float-slow" />
+                        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_#09090b_70%)]" />
+                    </div>
+
+                    <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.2 }}
+                            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass border border-zinc-800/60 mb-6"
+                        >
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                            <span className="text-emerald-400 text-xs font-mono font-medium">Available for Opportunities</span>
+                        </motion.div>
+
+                        <motion.h1
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.7, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[0.95] mb-4"
+                        >
+                            <span className="text-zinc-50">Nikhil</span>
+                            <br />
+                            <span className="bg-gradient-to-r from-indigo-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
+                                Kandesar
+                            </span>
+                        </motion.h1>
+
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.4 }}
+                            className="text-xl sm:text-2xl md:text-3xl font-semibold text-zinc-300 tracking-tight mb-4"
+                        >
+                            Blockchain Developer <span className="text-zinc-600">&</span> Smart Contract Engineer
+                        </motion.p>
+
+                        <motion.p
+                    
