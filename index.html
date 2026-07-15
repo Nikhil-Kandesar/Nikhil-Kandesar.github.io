@@ -4,44 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Nikhil Kandesar - Blockchain Developer & Smart Contract Engineer with 2.5+ years building production Web3 DApps, DeFi protocols, and smart contracts across 15+ blockchains.">
-    <title>Nikhil Kandesar - Portfolio</title>
+    <title>Nikhil Kandesar — Blockchain Developer</title>
     <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
+                        display: ['Fraunces', 'serif'],
                         sans: ['Inter', 'system-ui', 'sans-serif'],
                         mono: ['JetBrains Mono', 'monospace'],
                     },
                     colors: {
-                        zinc: {
-                            950: '#09090b',
-                            900: '#18181b',
-                            850: '#1f1f23',
-                            800: '#27272a',
-                            750: '#2e2e33',
-                            700: '#3f3f46',
-                            600: '#52525b',
-                            500: '#71717a',
-                            400: '#a1a1aa',
-                            300: '#d4d4d8',
-                            200: '#e4e4e7',
-                            100: '#f4f4f5',
-                            50: '#fafafa',
-                        },
-                        accent: {
-                            DEFAULT: '#6366f1',
-                            glow: 'rgba(99, 102, 241, 0.15)',
-                            soft: 'rgba(99, 102, 241, 0.08)',
-                        }
+                        ink: '#0a0705',
+                        panel: '#150d0a',
+                        panel2: '#1c110c',
+                        rust: '#7a2b18',
+                        rustdeep: '#4a1810',
+                        ember: '#c8672f',
+                        gold: '#c9a15a',
+                        parchment: '#f2e9d8',
+                        parchmentdim: '#cfc3ab',
                     }
                 }
             }
@@ -52,293 +41,487 @@
         html { scroll-behavior: smooth; }
         body {
             font-family: 'Inter', system-ui, sans-serif;
-            background: #09090b;
-            color: #fafafa;
+            background: #0a0705;
+            color: #f2e9d8;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: #09090b; }
-        ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
-        .glass {
-            background: rgba(24, 24, 27, 0.6);
-            backdrop-filter: blur(20px) saturate(1.2);
-            -webkit-backdrop-filter: blur(20px) saturate(1.2);
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0a0705; }
+        ::-webkit-scrollbar-thumb { background: #4a1810; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #7a2b18; }
+
+        .noise-bg {
+            background-image: radial-gradient(circle at 20% 20%, rgba(122,43,24,0.45), transparent 45%),
+                               radial-gradient(circle at 85% 10%, rgba(201,161,90,0.16), transparent 40%),
+                               radial-gradient(circle at 60% 90%, rgba(122,43,24,0.35), transparent 45%),
+                               radial-gradient(circle at 10% 70%, rgba(200,103,47,0.18), transparent 40%);
         }
-        .glass-card {
-            background: rgba(24, 24, 27, 0.5);
-            backdrop-filter: blur(16px) saturate(1.1);
-            -webkit-backdrop-filter: blur(16px) saturate(1.1);
-            border: 1px solid rgba(63, 63, 70, 0.4);
+        .grain::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 60;
+            opacity: 0.035;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
         }
-        .glow-orb {
+        .hairline { border-color: rgba(201,161,90,0.28); }
+        .eyebrow {
+            letter-spacing: 0.22em;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .big-serif {
+            font-family: 'Fraunces', serif;
+            font-optical-sizing: auto;
+            letter-spacing: -0.02em;
+        }
+        .card {
+            position: relative;
+            background: linear-gradient(160deg, rgba(255,230,200,0.10), rgba(122,43,24,0.10) 40%, rgba(10,7,5,0.22) 100%);
+            backdrop-filter: blur(24px) saturate(160%);
+            -webkit-backdrop-filter: blur(24px) saturate(160%);
+            border: 1px solid rgba(255,235,210,0.16);
+            box-shadow:
+                inset 0 1px 0 rgba(255,245,225,0.30),
+                inset 0 -12px 24px -18px rgba(0,0,0,0.55),
+                0 8px 32px -12px rgba(0,0,0,0.55),
+                0 1px 2px rgba(0,0,0,0.4);
+            transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease, background 0.35s ease;
+        }
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            pointer-events: none;
+            background: radial-gradient(120% 60% at 15% 0%, rgba(255,245,225,0.16), transparent 55%);
+            mix-blend-mode: screen;
+        }
+        .card:hover {
+            border-color: rgba(201,161,90,0.55);
+            box-shadow:
+                inset 0 1px 0 rgba(255,245,225,0.4),
+                inset 0 -12px 24px -18px rgba(0,0,0,0.5),
+                0 12px 40px -12px rgba(122,43,24,0.45),
+                0 1px 2px rgba(0,0,0,0.4);
+            transform: translateY(-2px);
+        }
+        .chip {
+            position: relative;
+            border: 1px solid rgba(255,235,210,0.22);
+            background: linear-gradient(160deg, rgba(255,230,200,0.14), rgba(122,43,24,0.12));
+            backdrop-filter: blur(14px) saturate(150%);
+            -webkit-backdrop-filter: blur(14px) saturate(150%);
+            box-shadow: inset 0 1px 0 rgba(255,245,225,0.25), 0 2px 8px -4px rgba(0,0,0,0.5);
+            transition: border-color 0.3s ease, background 0.3s ease;
+        }
+        .chip:hover {
+            border-color: rgba(201,161,90,0.6);
+            background: linear-gradient(160deg, rgba(255,230,200,0.2), rgba(122,43,24,0.18));
+        }
+        .glass-nav {
+            background: linear-gradient(180deg, rgba(28,17,12,0.55), rgba(10,7,5,0.45));
+            backdrop-filter: blur(20px) saturate(150%);
+            -webkit-backdrop-filter: blur(20px) saturate(150%);
+            box-shadow: inset 0 -1px 0 rgba(255,235,210,0.12), 0 8px 32px -16px rgba(0,0,0,0.6);
+        }
+        .glass-pill {
+            background: linear-gradient(160deg, rgba(255,240,220,0.95), rgba(242,233,216,0.85));
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 4px 16px -6px rgba(0,0,0,0.4);
+        }
+        .seal.glass {
+            background: linear-gradient(160deg, rgba(255,235,210,0.14), rgba(122,43,24,0.10));
+            backdrop-filter: blur(14px) saturate(150%);
+            -webkit-backdrop-filter: blur(14px) saturate(150%);
+            box-shadow: inset 0 1px 0 rgba(255,245,225,0.3), 0 4px 16px -8px rgba(0,0,0,0.5);
+        }
+        .glass-accent {
+            background: linear-gradient(160deg, rgba(255,160,100,0.55), rgba(200,103,47,0.65));
+            backdrop-filter: blur(14px) saturate(160%);
+            -webkit-backdrop-filter: blur(14px) saturate(160%);
+            border: 1px solid rgba(255,220,180,0.3);
+            box-shadow: inset 0 1px 0 rgba(255,240,220,0.4), 0 6px 20px -8px rgba(200,103,47,0.5);
+            transition: filter 0.3s ease, transform 0.3s ease;
+        }
+        .glass-accent:hover { filter: brightness(1.12); transform: translateY(-1px); }
+        .glass-outline {
+            background: linear-gradient(160deg, rgba(255,235,210,0.08), rgba(122,43,24,0.06));
+            backdrop-filter: blur(14px) saturate(150%);
+            -webkit-backdrop-filter: blur(14px) saturate(150%);
+            border: 1px solid rgba(255,235,210,0.24);
+            box-shadow: inset 0 1px 0 rgba(255,245,225,0.15);
+            transition: border-color 0.3s ease, background 0.3s ease;
+        }
+        .glass-outline:hover { border-color: rgba(201,161,90,0.6); background: linear-gradient(160deg, rgba(255,235,210,0.14), rgba(122,43,24,0.1)); }
+        .glow {
             position: absolute;
             border-radius: 50%;
-            filter: blur(100px);
+            filter: blur(110px);
             pointer-events: none;
         }
         @keyframes float {
             0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-20px) scale(1.05); }
+            50% { transform: translateY(-18px) scale(1.04); }
         }
-        .animate-float { animation: float 8s ease-in-out infinite; }
-        .animate-float-delay { animation: float 10s ease-in-out infinite 2s; }
-        .animate-float-slow { animation: float 12s ease-in-out infinite 4s; }
+        .animate-float { animation: float 9s ease-in-out infinite; }
+        .animate-float-delay { animation: float 11s ease-in-out infinite 2s; }
+
+        .seal {
+            border: 1px solid rgba(201,161,90,0.55);
+        }
+        .ledger-row:not(:last-child) { border-bottom: 1px solid rgba(201,161,90,0.14); }
+
+        @media (prefers-reduced-motion: reduce) {
+            .animate-float, .animate-float-delay { animation: none; }
+        }
     </style>
 </head>
-<body>
+<body class="noise-bg grain">
     <div id="root"></div>
 
     <script type="text/babel">
         const { useState, useEffect, useRef } = React;
-        const { motion, useInView, AnimatePresence } = window.Motion;
 
-        // ===== LUCIDE ICONS =====
+        /* ================= ICONS ================= */
         const Icons = {
-            Cube: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m21 16-9 5-9-5"/><path d="m3 16 9 5 9-5"/><path d="M12 2 3 7l9 5 9-5-9-5Z"/></svg>,
-            Shield: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>,
-            Coins: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="M7 6h1v4"/><path d="m16.71 13.88.7.71-2.82 2.82"/></svg>,
-            Link: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>,
-            Code: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>,
-            Server: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>,
-            Database: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>,
-            FlaskConical: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 2v7.31"/><path d="M14 2v7.31"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg>,
-            TrendingUp: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>,
-            Zap: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>,
-            Mail: () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>,
-            Phone: () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>,
-            Linkedin: () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>,
-            Github: () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>,
-            ExternalLink: () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>,
-            ChevronRight: () => <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>,
-            Menu: () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>,
-            X: () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>,
-            GraduationCap: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>,
+            Chain: (p) => <svg width={p?.s||18} height={p?.s||18} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>,
+            Shield: (p) => <svg width={p?.s||18} height={p?.s||18} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>,
+            Cube: (p) => <svg width={p?.s||18} height={p?.s||18} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="m21 16-9 5-9-5"/><path d="m3 16 9 5 9-5"/><path d="M12 2 3 7l9 5 9-5-9-5Z"/></svg>,
+            Key: (p) => <svg width={p?.s||18} height={p?.s||18} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3L22 7l-3-3"/></svg>,
+            Flask: (p) => <svg width={p?.s||18} height={p?.s||18} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M10 2v7.31"/><path d="M14 2v7.31"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg>,
+            Layers: (p) => <svg width={p?.s||18} height={p?.s||18} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="m12 2 8.5 5-8.5 5-8.5-5L12 2z"/><path d="m3.5 12 8.5 5 8.5-5"/><path d="m3.5 17 8.5 5 8.5-5"/></svg>,
+            Mail: (p) => <svg width={p?.s||16} height={p?.s||16} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>,
+            Phone: (p) => <svg width={p?.s||16} height={p?.s||16} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>,
+            Linkedin: (p) => <svg width={p?.s||16} height={p?.s||16} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>,
+            Github: (p) => <svg width={p?.s||16} height={p?.s||16} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>,
+            Arrow: (p) => <svg width={p?.s||14} height={p?.s||14} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>,
+            Menu: (p) => <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>,
+            X: (p) => <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>,
         };
 
-        // ===== ANIMATION VARIANTS =====
-        const fadeUp = {
-            hidden: { opacity: 0, y: 30 },
-            visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
-        };
-        const fadeIn = {
-            hidden: { opacity: 0 },
-            visible: { opacity: 1, transition: { duration: 0.8 } }
-        };
-
-        // ===== REVEAL COMPONENT =====
-        function Reveal({ children, className = "", delay = 0 }) {
+        /* ================= REVEAL ON SCROLL ================= */
+        function useReveal() {
             const ref = useRef(null);
-            const isInView = useInView(ref, { once: true, margin: "-50px" });
+            const [visible, setVisible] = useState(false);
+            useEffect(() => {
+                const el = ref.current;
+                if (!el) return;
+                const obs = new IntersectionObserver(([entry]) => {
+                    if (entry.isIntersecting) { setVisible(true); obs.disconnect(); }
+                }, { threshold: 0.12 });
+                obs.observe(el);
+                return () => obs.disconnect();
+            }, []);
+            return [ref, visible];
+        }
+
+        function Reveal({ children, className = "", delay = 0 }) {
+            const [ref, visible] = useReveal();
             return (
-                <motion.div
+                <div
                     ref={ref}
-                    initial="hidden"
-                    animate={isInView ? "visible" : "hidden"}
-                    variants={fadeUp}
-                    transition={{ delay }}
-                    className={className}
+                    className={`${className} transition-all duration-700 ease-out`}
+                    style={{
+                        opacity: visible ? 1 : 0,
+                        transform: visible ? "translateY(0)" : "translateY(24px)",
+                        transitionDelay: `${delay}ms`,
+                    }}
                 >
                     {children}
-                </motion.div>
+                </div>
             );
         }
 
-        // ===== NAVBAR =====
+        /* ================= NAVBAR ================= */
         function Navbar() {
             const [scrolled, setScrolled] = useState(false);
-            const [mobileOpen, setMobileOpen] = useState(false);
-
+            const [open, setOpen] = useState(false);
             useEffect(() => {
-                const handleScroll = () => setScrolled(window.scrollY > 20);
-                window.addEventListener("scroll", handleScroll);
-                return () => window.removeEventListener("scroll", handleScroll);
+                const onScroll = () => setScrolled(window.scrollY > 20);
+                window.addEventListener("scroll", onScroll);
+                return () => window.removeEventListener("scroll", onScroll);
             }, []);
-
-            const navLinks = [
+            const links = [
                 { label: "About", href: "#about" },
                 { label: "Skills", href: "#skills" },
                 { label: "Experience", href: "#experience" },
                 { label: "Projects", href: "#projects" },
                 { label: "Contact", href: "#contact" },
             ];
-
             return (
-                <motion.nav
-                    initial={{ y: -100 }}
-                    animate={{ y: 0 }}
-                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                    className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-                        scrolled ? "glass border-b border-zinc-800/50" : "bg-transparent"
-                    }`}
-                >
+                <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "glass-nav border-b hairline" : "bg-transparent"}`}>
                     <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-                        <a href="#" className="flex items-center gap-2.5 group">
-                            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center text-white text-sm font-bold shadow-lg shadow-indigo-500/20 group-hover:shadow-indigo-500/40 transition-shadow duration-300">
-                                NK
-                            </div>
-                            <span className="text-zinc-100 font-semibold text-sm tracking-tight hidden sm:block">Nikhil Kandesar</span>
+                        <a href="#" className="flex items-center gap-2">
+                            <span className="text-parchment font-display font-semibold text-lg tracking-tight">NK</span>
+                            <span className="text-parchmentdim/70 text-xs font-mono hidden sm:block">// BLOCKCHAIN DEV</span>
                         </a>
-
                         <div className="hidden md:flex items-center gap-8">
-                            {navLinks.map((link) => (
-                                <a
-                                    key={link.label}
-                                    href={link.href}
-                                    className="text-zinc-400 text-sm font-medium hover:text-zinc-100 transition-colors duration-300 relative group"
-                                >
-                                    {link.label}
-                                    <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-gradient-to-r from-indigo-500 to-violet-500 group-hover:w-full transition-all duration-300" />
+                            {links.map(l => (
+                                <a key={l.label} href={l.href} className="text-parchmentdim text-sm font-medium tracking-wide hover:text-gold transition-colors">
+                                    {l.label}
                                 </a>
                             ))}
                         </div>
-
                         <div className="flex items-center gap-3">
-                            <a href="mailto:nikilkandesar209@gmail.com?subject=Let's Connect" className="hidden sm:flex items-center gap-2 px-4 py-2 text-sm font-medium text-zinc-900 bg-zinc-100 rounded-lg hover:bg-white hover:scale-[1.02] transition-all duration-300">
-                                Get In Touch
+                            <a href="mailto:nikilkandesar209@gmail.com?subject=Let's Connect" className="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold tracking-wide uppercase text-ink glass-pill rounded-full hover:brightness-95 transition-all">
+                                Get in touch
                             </a>
-                            <button onClick={() => setMobileOpen(!mobileOpen)} className="md:hidden text-zinc-400 hover:text-zinc-100 transition-colors p-1">
-                                {mobileOpen ? <Icons.X /> : <Icons.Menu />}
+                            <button onClick={() => setOpen(!open)} className="md:hidden text-parchment p-1">
+                                {open ? <Icons.X/> : <Icons.Menu/>}
                             </button>
                         </div>
                     </div>
-
-                    <AnimatePresence>
-                        {mobileOpen && (
-                            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className="md:hidden glass border-t border-zinc-800/50 overflow-hidden">
-                                <div className="px-6 py-4 flex flex-col gap-3">
-                                    {navLinks.map((link) => (
-                                        <a key={link.label} href={link.href} onClick={() => setMobileOpen(false)} className="text-zinc-400 text-sm font-medium hover:text-zinc-100 transition-colors py-2">
-                                            {link.label}
-                                        </a>
-                                    ))}
-                                    <a href="mailto:nikilkandesar209@gmail.com?subject=Let's Connect" className="mt-2 flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium text-zinc-900 bg-zinc-100 rounded-lg">
-                                        Get In Touch
-                                    </a>
-                                </div>
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
-                </motion.nav>
+                    {open && (
+                        <div className="md:hidden glass-nav border-t hairline px-6 py-4 flex flex-col gap-3">
+                            {links.map(l => (
+                                <a key={l.label} href={l.href} onClick={() => setOpen(false)} className="text-parchmentdim text-sm py-2">{l.label}</a>
+                            ))}
+                            <a href="mailto:nikilkandesar209@gmail.com" className="mt-2 text-center px-4 py-2.5 text-xs font-semibold uppercase text-ink glass-pill rounded-full">Get in touch</a>
+                        </div>
+                    )}
+                </nav>
             );
         }
 
-        // ===== HERO SECTION =====
+        /* ================= HERO ================= */
         function Hero() {
             return (
-                <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+                <header className="relative min-h-screen flex flex-col justify-between overflow-hidden pt-28 pb-10">
                     <div className="absolute inset-0 pointer-events-none">
-                        <div className="glow-orb w-[500px] h-[500px] bg-indigo-600/10 top-[-10%] left-[-10%] animate-float" />
-                        <div className="glow-orb w-[400px] h-[400px] bg-violet-600/10 top-[30%] right-[-5%] animate-float-delay" />
-                        <div className="glow-orb w-[350px] h-[350px] bg-emerald-600/8 bottom-[-5%] left-[20%] animate-float-slow" />
-                        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_#09090b_70%)]" />
+                        <div className="glow w-[520px] h-[520px] bg-rust/25 top-[-12%] left-[-8%] animate-float"/>
+                        <div className="glow w-[420px] h-[420px] bg-ember/10 bottom-[-10%] right-[-6%] animate-float-delay"/>
                     </div>
 
-                    <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
-                        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass border border-zinc-800/60 mb-6">
-                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                            <span className="text-emerald-400 text-xs font-mono font-medium">Available for Opportunities</span>
-                        </motion.div>
-
-                        <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.25, ease: [0.22, 1, 0.36, 1] }} className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[0.95] mb-4">
-                            <span className="text-zinc-50">Nikhil</span><br />
-                            <span className="bg-gradient-to-r from-indigo-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">Kandesar</span>
-                        </motion.h1>
-
-                        <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }} className="text-xl sm:text-2xl md:text-3xl font-semibold text-zinc-300 tracking-tight mb-4">
-                            Blockchain Developer <span className="text-zinc-600">&</span> Smart Contract Engineer
-                        </motion.p>
-
-                        <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.5 }} className="text-zinc-400 max-w-2xl mx-auto mb-8 text-base sm:text-lg">
-                            Blockchain Developer with 2.5 years of experience designing, developing, and deploying production-ready smart contracts and decentralized applications. Expert in cryptocurrency wallet infrastructure, blockchain transaction lifecycles, and secure key management across 15+ mainnet deployments.
-                        </motion.p>
-
-                        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.6 }} className="flex items-center justify-center gap-4">
-                            <a href="#projects" className="px-5 py-2.5 rounded-xl font-medium bg-gradient-to-r from-indigo-500 to-violet-600 text-white shadow-lg shadow-indigo-500/20 transition-all hover:opacity-90 hover:scale-[1.02]">
-                                View Projects
-                            </a>
-                            <a href="#contact" className="px-5 py-2.5 rounded-xl font-medium glass border border-zinc-800 transition-all text-zinc-300 hover:bg-zinc-900/40 hover:scale-[1.02]">
-                                Contact Me
-                            </a>
-                        </motion.div>
+                    {/* top strip */}
+                    <div className="relative z-10 max-w-6xl mx-auto w-full px-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-[10px] sm:text-[11px] eyebrow text-parchmentdim/70">
+                        <span>WEB3 &nbsp;/&nbsp; SMART CONTRACTS</span>
+                        <span className="flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-ember animate-pulse shrink-0"/>
+                            AVAILABLE FOR OPPORTUNITIES
+                        </span>
                     </div>
-                </section>
-            );
-        }
 
-        // ===== SECTION CONTAINER COMPONENT =====
-        function Section({ id, title, children }) {
-            return (
-                <section id={id} className="py-24 max-w-5xl mx-auto px-6 border-t border-zinc-900">
-                    <Reveal>
-                        <h2 className="text-2xl font-bold tracking-tight text-zinc-200 mb-12 font-mono">
-                            <span className="text-indigo-500">//</span> {title}
-                        </h2>
-                    </Reveal>
-                    {children}
-                </section>
-            );
-        }
+                    {/* giant headline */}
+                    <div className="relative z-10 max-w-6xl mx-auto w-full px-6 mt-6">
+                        <h1 className="big-serif font-black text-parchment leading-[0.86] text-[16vw] sm:text-[13vw] md:text-[9.5vw] lg:text-[8vw] select-none">
+                            BLOCKCHAIN
+                        </h1>
+                    </div>
 
-        // ===== PORTFOLIO SECTIONS =====
-        function About() {
-            return (
-                <Section id="about" title="About Summary">
-                    <div className="grid md:grid-cols-3 gap-8 text-zinc-400 text-sm leading-relaxed">
-                        <div className="md:col-span-2 space-y-4 text-base">
-                            <p>I specialize in building cryptocurrency wallet infrastructure with structural expertise in wallet architecture and blockchain transaction lifecycles.</p>
-                            <p>My foundational experience includes a strong understanding of secure key systems like BIP-32, BIP-39, and BIP-44, cryptography, and secure key management frameworks.</p>
-                            <p>I have built robust multi-chain and cross-chain applications connecting layers across Ethereum, Polygon, BNB Chain, Base, Arbitrum, Solana, and Tron environments.</p>
+                    {/* content grid under headline */}
+                    <div className="relative z-10 max-w-6xl mx-auto w-full px-6 mt-10 grid md:grid-cols-12 gap-8 items-start">
+                        <div className="md:col-span-4 space-y-4">
+                            <p className="big-serif text-3xl text-gold leading-tight">Solidity /<br/>Rust / Move</p>
+                            <p className="text-parchmentdim text-sm leading-relaxed font-mono">
+                                SMART CONTRACTS<br/>WALLET INFRASTRUCTURE<br/>DEFI &amp; RWA PROTOCOLS
+                            </p>
+                            <blockquote className="mt-6 pt-6 border-t hairline big-serif italic text-parchment/90 text-lg leading-snug">
+                                "I build the infrastructure that moves value across chains — securely, and at production scale."
+                            </blockquote>
                         </div>
-                        <div className="glass-card p-6 rounded-2xl flex flex-col justify-center gap-4">
-                            <div>
-                                <span className="text-indigo-400 font-bold text-3xl block">2.5 Yrs</span>
-                                <span className="text-zinc-400 text-xs uppercase tracking-wider font-mono font-semibold">Professional Track</span>
-                            </div>
-                            <div>
-                                <span className="text-indigo-400 font-bold text-3xl block">15+</span>
-                                <span className="text-zinc-400 text-xs uppercase tracking-wider font-mono font-semibold">Mainnet Projects</span>
-                            </div>
-                            <div className="pt-2 border-t border-zinc-800/80">
-                                <span className="text-zinc-300 font-medium block text-xs">B.Tech (Electronics & Telecom)</span>
-                                <span className="text-zinc-500 text-[11px] font-mono">VIIT Pune | CGPA: 9.29</span>
-                            </div>
-                        </div>
-                    </div>
-                </Section>
-            );
-        }
 
-        function Skills() {
-            const taxonomy = [
-                { title: "Blockchain Core", stack: ["Solidity", "Rust", "Move", "Security Auditing", "Gas Optimization", "Hardhat", "Foundry"] },
-                { title: "Networks & Infrastructure", stack: ["Ethereum", "Solana", "Polygon", "Arbitrum", "BNB Chain", "Base", "Tron", "Bitcoin", "AWS", "Docker", "CI/CD"] },
-                { title: "Tokens & Protocols", stack: ["ERC-20", "ERC-721", "ERC-1155", "ERC-3643", "ERC-8004", "SPL Tokens", "Tokenization", "Staking", "RWA"] },
-                { title: "Wallet & Key Management", stack: ["BIP-32/39/44", "HD Wallet", "MPC Wallet", "Multi-sig", "Transaction Signing", "KMS", "HSM", "Fireblocks", "BitGo", "Safe"] },
-                { title: "Full-Stack Software", stack: ["TypeScript", "JavaScript", "React.js", "Next.js", "Node.js", "NestJS", "PostgreSQL", "MongoDB", "Redis", "REST APIs", "WebSockets"] }
-            ];
-            return (
-                <Section id="skills" title="Technical Skills">
-                    <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
-                        {taxonomy.map((item, index) => (
-                            <div key={index} className="glass-card p-5 rounded-xl flex flex-col justify-between">
-                                <h3 className="text-zinc-300 font-semibold mb-4 text-xs tracking-wider uppercase font-mono text-indigo-400">{item.title}</h3>
-                                <div className="flex flex-wrap gap-1.5">
-                                    {item.stack.map((s, idx) => (
-                                        <span key={idx} className="px-2.5 py-1 rounded-md text-[11px] font-mono bg-zinc-900 border border-zinc-800 text-zinc-300">
-                                            {s}
-                                        </span>
-                                    ))}
+                        <div className="md:col-span-1 hidden md:flex justify-center">
+                            <div className="w-px h-full bg-gold/20"/>
+                        </div>
+
+                        <div className="md:col-span-7">
+                            <div className="flex items-start justify-between gap-4">
+                                <div>
+                                    <h2 className="big-serif text-4xl sm:text-5xl font-bold text-parchment leading-none">Nikhil<br/>Kandesar</h2>
+                                    <p className="mt-3 text-ember font-mono text-sm tracking-wide uppercase">Blockchain Developer &amp; Smart Contract Engineer</p>
+                                </div>
+                                <div className="hidden sm:flex w-20 h-20 rounded-full seal glass items-center justify-center shrink-0 mt-1">
+                                    <span className="font-display text-[10px] text-gold text-center leading-tight tracking-widest">EST.<br/>2023</span>
                                 </div>
                             </div>
-                        ))}
+
+                            <p className="mt-5 text-parchmentdim text-base leading-relaxed max-w-xl">
+                                Blockchain developer with 2.5+ years designing, building, and deploying production-ready
+                                smart contracts and decentralized applications — with deep expertise in wallet
+                                infrastructure, transaction lifecycles, and secure key management across 15+ mainnet
+                                deployments spanning Ethereum, Solana, Polygon, and beyond.
+                            </p>
+
+                            <div className="mt-8 grid grid-cols-3 gap-3 sm:gap-4 max-w-2xl">
+                                <Stat icon={<Icons.Layers/>} value="2.5+" label="Years Exp."/>
+                                <Stat icon={<Icons.Cube/>} value="15+" label="Mainnets"/>
+                                <Stat icon={<Icons.Chain/>} value="7+" label="Chains"/>
+                            </div>
+
+                            <div className="mt-8 flex flex-wrap gap-4">
+                                <a href="#projects" className="px-5 py-2.5 rounded-full glass-accent text-ink text-sm font-semibold tracking-wide">View Projects</a>
+                                <a href="#contact" className="px-5 py-2.5 rounded-full glass-outline text-parchment text-sm font-semibold tracking-wide">Contact Me</a>
+                            </div>
+                        </div>
                     </div>
-                </Section>
+                </header>
             );
         }
 
+        function Stat({ icon, value, label }) {
+            return (
+                <div className="card rounded-xl p-4 flex flex-col items-start gap-1.5">
+                    <div className="text-gold">{icon}</div>
+                    <div className="big-serif text-xl text-parchment leading-none">{value}</div>
+                    <div className="text-[10px] eyebrow text-parchmentdim/60 whitespace-nowrap">{label}</div>
+                </div>
+            );
+        }
+
+        /* ================= SECTION WRAPPER ================= */
+        function SectionHead({ eyebrow, title }) {
+            return (
+                <Reveal className="mb-10 flex items-end justify-between border-b hairline pb-4">
+                    <div>
+                        <p className="text-[11px] eyebrow text-ember mb-2">{eyebrow}</p>
+                        <h2 className="big-serif text-3xl sm:text-4xl text-parchment font-semibold">{title}</h2>
+                    </div>
+                </Reveal>
+            );
+        }
+
+        /* ================= WHAT I DO STRIP ================= */
+        function WhatIDo() {
+            const items = [
+                { icon: <Icons.Cube s={22}/>, title: "Smart Contracts", desc: "Solidity, Rust & Move contracts audited for gas efficiency and security." },
+                { icon: <Icons.Key s={22}/>, title: "Wallet Infra", desc: "HD, MPC & multi-sig wallets built on BIP-32/39/44 standards." },
+                { icon: <Icons.Chain s={22}/>, title: "Cross-Chain Systems", desc: "Bridges and routing across EVM, Solana, and Tron environments." },
+                { icon: <Icons.Shield s={22}/>, title: "Security & Testing", desc: "Hardhat & Foundry test suites with high coverage before mainnet." },
+                { icon: <Icons.Flask s={22}/>, title: "DeFi / RWA Protocols", desc: "Tokenization, staking, and compliance-aware asset platforms." },
+            ];
+            return (
+                <section className="bg-panel border-y hairline py-14">
+                    <div className="max-w-6xl mx-auto px-6">
+                        <Reveal className="eyebrow text-[11px] text-ember mb-8">WHAT I DO</Reveal>
+                        <div className="grid sm:grid-cols-2 md:grid-cols-5 gap-5">
+                            {items.map((it, i) => (
+                                <Reveal key={it.title} delay={i * 60} className="card rounded-xl p-5 flex flex-col gap-3">
+                                    <span className="text-gold">{it.icon}</span>
+                                    <h3 className="text-parchment font-semibold text-sm">{it.title}</h3>
+                                    <p className="text-parchmentdim/80 text-xs leading-relaxed">{it.desc}</p>
+                                </Reveal>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            );
+        }
+
+        /* ================= ABOUT ================= */
+        function About() {
+            return (
+                <section id="about" className="max-w-6xl mx-auto px-6 py-24">
+                    <SectionHead eyebrow="01 / PROFILE" title="About Me"/>
+                    <div className="grid md:grid-cols-3 gap-10">
+                        <Reveal className="md:col-span-2 space-y-4 text-parchmentdim text-base leading-relaxed">
+                            <p>I specialize in building cryptocurrency wallet infrastructure, with structural expertise
+                               in wallet architecture and blockchain transaction lifecycles.</p>
+                            <p>My foundation includes secure key systems like BIP-32, BIP-39, and BIP-44, applied
+                               cryptography, and secure key-management frameworks.</p>
+                            <p>I've built multi-chain and cross-chain applications connecting Ethereum, Polygon,
+                               BNB Chain, Base, Arbitrum, Solana, and Tron — production systems that move real value.</p>
+                        </Reveal>
+                        <Reveal delay={120} className="card rounded-2xl p-6 flex flex-col gap-5">
+                            <div className="ledger-row pb-4">
+                                <span className="big-serif text-3xl text-gold block">2.5 Yrs</span>
+                                <span className="text-[10px] eyebrow text-parchmentdim/60">PROFESSIONAL TRACK</span>
+                            </div>
+                            <div className="ledger-row pb-4">
+                                <span className="big-serif text-3xl text-gold block">15+</span>
+                                <span className="text-[10px] eyebrow text-parchmentdim/60">MAINNET PROJECTS</span>
+                            </div>
+                            <div>
+                                <span className="text-parchment font-medium block text-sm">B.Tech, Electronics &amp; Telecom</span>
+                                <span className="text-parchmentdim/60 text-xs font-mono">VIIT Pune · CGPA 9.29</span>
+                            </div>
+                        </Reveal>
+                    </div>
+                </section>
+            );
+        }
+
+        /* ================= TAG GRID (balanced row wrap) ================= */
+        // Distributes items across rows of a target width so the last row
+        // is never a ragged 1-2 item leftover — rows are balanced instead
+        // of greedily packed left-to-right.
+        function balanceRows(items, perRow) {
+            const rowCount = Math.ceil(items.length / perRow);
+            const baseSize = Math.floor(items.length / rowCount);
+            const remainder = items.length % rowCount;
+            const rows = [];
+            let idx = 0;
+            for (let r = 0; r < rowCount; r++) {
+                // distribute the remainder across the first rows so sizes
+                // differ by at most 1, and earlier rows are never shorter
+                // than later ones (keeps a "pyramid" rather than ragged tail)
+                const size = baseSize + (r < remainder ? 1 : 0);
+                rows.push(items.slice(idx, idx + size));
+                idx += size;
+            }
+            return rows;
+        }
+
+        function TagGrid({ items, perRow = 3 }) {
+            const rows = balanceRows(items, perRow);
+            return (
+                <div className="flex flex-col gap-1.5">
+                    {rows.map((row, ri) => (
+                        <div
+                            key={ri}
+                            className="grid gap-1.5"
+                            style={{ gridTemplateColumns: `repeat(${row.length}, minmax(0, 1fr))` }}
+                        >
+                            {row.map(s => (
+                                <span
+                                    key={s}
+                                    title={s}
+                                    className="chip px-2.5 py-1.5 rounded-md text-[11px] font-mono text-parchment/90 text-center leading-tight"
+                                >
+                                    {s}
+                                </span>
+                            ))}
+                        </div>
+                    ))}
+                </div>
+            );
+        }
+
+        /* ================= SKILLS ================= */
+        function Skills() {
+            const groups = [
+                { title: "Blockchain Core", items: ["Solidity", "Rust", "Move", "Security Auditing", "Gas Optimization", "Hardhat", "Foundry"] },
+                { title: "Networks & Infra", items: ["Ethereum", "Solana", "Polygon", "Arbitrum", "BNB Chain", "Base", "Tron", "Bitcoin", "AWS", "Docker", "CI/CD"] },
+                { title: "Tokens & Protocols", items: ["ERC-20", "ERC-721", "ERC-1155", "ERC-3643", "ERC-8004", "SPL Tokens", "Tokenization", "Staking", "RWA"] },
+                { title: "Wallet & Key Management", items: ["BIP-32/39/44", "HD Wallet", "MPC Wallet", "Multi-sig", "Tx Signing", "KMS", "HSM", "Fireblocks", "BitGo", "Safe"] },
+                { title: "Full-Stack Software", items: ["TypeScript", "JavaScript", "React.js", "Next.js", "Node.js", "NestJS", "PostgreSQL", "MongoDB", "Redis", "REST", "WebSockets"] },
+            ];
+            return (
+                <section id="skills" className="max-w-6xl mx-auto px-6 py-24">
+                    <SectionHead eyebrow="02 / STACK" title="Technical Skills"/>
+                    <div className="grid sm:grid-cols-2 gap-5">
+                        {groups.map((g, i) => {
+                            const isLastOdd = groups.length % 2 === 1 && i === groups.length - 1;
+                            return (
+                                <Reveal
+                                    key={g.title}
+                                    delay={i * 60}
+                                    className={`card rounded-xl p-5 ${isLastOdd ? "sm:col-span-2" : ""}`}
+                                >
+                                    <h3 className="text-[11px] eyebrow text-ember mb-4">{g.title.toUpperCase()}</h3>
+                                    <TagGrid items={g.items} perRow={isLastOdd ? 6 : 3}/>
+                                </Reveal>
+                            );
+                        })}
+                    </div>
+                </section>
+            );
+        }
+
+        /* ================= EXPERIENCE ================= */
         function Experience() {
             const jobs = [
                 {
@@ -349,8 +532,8 @@
                     bullets: [
                         "Developing smart contracts for gaming and NFT-based platforms on Ethereum and Solana.",
                         "Implementing token standards (ERC-721, ERC-1155) for in-game assets and collectibles.",
-                        "Building decentralized gaming infrastructure with play-to-earn mechanics."
-                    ]
+                        "Building decentralized gaming infrastructure with play-to-earn mechanics.",
+                    ],
                 },
                 {
                     role: "Blockchain Developer",
@@ -361,8 +544,8 @@
                         "Developed zero-fee crypto payment infrastructure enabling borderless transactions.",
                         "Built Solana-native payment routing programs achieving sub-second finality.",
                         "Implemented crypto wallet solutions with transaction monitoring and confirmation handling.",
-                        "Implemented gasless transaction relayer for seamless user experience."
-                    ]
+                        "Implemented gasless transaction relayer for seamless user experience.",
+                    ],
                 },
                 {
                     role: "Blockchain Developer",
@@ -376,160 +559,191 @@
                         "Built and integrated crypto wallets (HD, MPC, multi-sig) with BIP-32/39/44 standards.",
                         "Integrated MetaMask, WalletConnect, and hardware wallets for secure signing.",
                         "Conducted smart contract testing using Hardhat and Foundry with high code coverage.",
-                        "Deployed applications on AWS with Docker and CI/CD pipelines."
-                    ]
-                }
+                        "Deployed applications on AWS with Docker and CI/CD pipelines.",
+                    ],
+                },
             ];
-
             return (
-                <Section id="experience" title="Professional Experience">
-                    <div className="relative pl-6 border-l border-zinc-800 space-y-12">
+                <section id="experience" className="max-w-6xl mx-auto px-6 py-24">
+                    <SectionHead eyebrow="03 / TIMELINE" title="Professional Experience"/>
+                    <div className="relative pl-8 border-l hairline space-y-14">
                         {jobs.map((job, idx) => (
-                            <div key={idx} className="relative">
-                                <div className="absolute -left-[31px] top-1.5 w-2 h-2 rounded-full bg-indigo-500 ring-4 ring-indigo-950" />
-                                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                                    <span className="text-xs font-mono text-indigo-400">{job.period}</span>
-                                    <span className="text-xs text-zinc-500 font-mono">{job.location}</span>
+                            <Reveal key={idx} delay={idx * 80} className="relative">
+                                <div className="absolute -left-[37px] top-1.5 w-2.5 h-2.5 rounded-full bg-ember ring-4 ring-panel"/>
+                                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
+                                    <span className="text-xs font-mono text-ember">{job.period}</span>
+                                    <span className="text-xs text-parchmentdim/60 font-mono">{job.location}</span>
                                 </div>
-                                <h3 className="text-zinc-100 font-semibold text-lg mt-1">{job.role}</h3>
-                                <p className="text-zinc-400 text-sm font-medium">{job.company}</p>
-                                <ul className="mt-3 space-y-2 text-zinc-400 text-sm list-disc list-inside leading-relaxed">
+                                <h3 className="big-serif text-xl text-parchment">{job.role}</h3>
+                                <p className="text-parchmentdim/80 text-sm font-medium mb-3">{job.company}</p>
+                                <ul className="space-y-2 text-parchmentdim/90 text-sm leading-relaxed">
                                     {job.bullets.map((b, i) => (
-                                        <li key={i} className="text-zinc-400">{b}</li>
+                                        <li key={i} className="flex gap-2">
+                                            <span className="text-gold mt-1.5 w-1 h-1 rounded-full bg-gold shrink-0"/>
+                                            <span>{b}</span>
+                                        </li>
                                     ))}
                                 </ul>
-                            </div>
+                            </Reveal>
                         ))}
                     </div>
-                </Section>
+                </section>
             );
         }
 
+        /* ================= PROJECTS ================= */
         function Projects() {
             const list = [
                 {
                     name: "DePINed",
                     type: "DEFI / INFRASTRUCTURE",
-                    desc: "Decentralized Compute & Bandwidth Network for AI & Rendering Infrastructure optimized with custom token-incentive distribution mechanisms.",
-                    tech: ["Solidity", "Hardhat", "Ethers.js", "Ethereum"],
-                    chains: ["Base Chain", "BNB Chain"]
+                    desc: "Decentralized compute & bandwidth network for AI and rendering infrastructure, with custom token-incentive distribution.",
+                    tech: ["Solidity", "Hardhat", "Ethers.js"],
+                    chains: ["Base", "BNB Chain"],
                 },
                 {
                     name: "ExDex",
                     type: "DEFI / TRADING",
-                    desc: "AI-Driven Semi-Decentralized Multi-Asset Trading Platform pairing secure on-chain validation layers with high-speed off-chain AI order routing systems.",
-                    tech: ["Solidity", "Hardhat", "React.js", "Multi-asset vaults"],
-                    chains: ["BNB Chain", "XDC Network"]
+                    desc: "AI-driven semi-decentralized multi-asset trading platform pairing on-chain validation with off-chain AI order routing.",
+                    tech: ["Solidity", "React.js", "Multi-asset vaults"],
+                    chains: ["BNB Chain", "XDC Network"],
                 },
                 {
                     name: "Botify.cloud",
                     type: "WEB3 / AUTOMATION",
-                    desc: "No-Code AI Agent Marketplace enabling automated deployment of custom on-chain crypto trading bots. Built upgradeable proxy patterns for strategic updates.",
-                    tech: ["Solidity", "ERC-20", "Proxy patterns", "Node.js"],
-                    chains: ["Solana", "Sui Chain"]
+                    desc: "No-code AI agent marketplace enabling deployment of custom on-chain crypto trading bots via upgradeable proxy patterns.",
+                    tech: ["Solidity", "ERC-20", "Node.js"],
+                    chains: ["Solana", "Sui"],
                 },
                 {
                     name: "Raze",
                     type: "RWA / DEFI",
-                    desc: "Tokenized Real-World Asset (RWA) Platform enabling fractional ownership, automated regulatory compliance, KYC/AML ledger checks, and institutional-grade secure custody architectures.",
-                    tech: ["Solidity", "ERC-3643", "ERC-1155", "TypeScript", "NestJS", "PostgreSQL"],
-                    chains: ["Redbelly Network", "Avalanche Chain"]
+                    desc: "Tokenized real-world asset platform enabling fractional ownership, automated compliance, and institutional custody.",
+                    tech: ["Solidity", "ERC-3643", "NestJS"],
+                    chains: ["Redbelly", "Avalanche"],
                 },
                 {
                     name: "Paywaz",
                     type: "PAYMENTS / WEB3",
-                    desc: "Zero-Fee, Borderless Crypto Payments Platform structured for cross-border transactions featuring native gasless transaction support mechanisms.",
-                    tech: ["Rust", "Solana", "Anchor", "Payment routing"],
-                    chains: ["Solana", "Polygon Chain"]
-                }
+                    desc: "Zero-fee, borderless crypto payments platform for cross-border transactions with native gasless support.",
+                    tech: ["Rust", "Anchor", "Payment routing"],
+                    chains: ["Solana", "Polygon"],
+                },
             ];
-
             return (
-                <Section id="projects" title="Key Projects">
-                    <div className="grid md:grid-cols-2 gap-6">
-                        {list.map((proj, idx) => (
-                            <div key={idx} className="glass-card p-6 rounded-xl group hover:border-zinc-700 transition-all flex flex-col justify-between">
-                                <div>
-                                    <div className="flex justify-between items-start mb-3">
-                                        <span className="text-[10px] font-mono uppercase bg-indigo-950/50 text-indigo-400 px-2 py-0.5 rounded border border-indigo-900/40">{proj.type}</span>
-                                        <div className="text-zinc-500 group-hover:text-zinc-300 transition-colors"><Icons.ExternalLink /></div>
-                                    </div>
-                                    <h4 className="text-zinc-100 font-bold text-base mb-1 group-hover:text-indigo-400 transition-colors">{proj.name}</h4>
-                                    
-                                    <div className="flex flex-wrap gap-1 mb-3">
-                                        {proj.chains.map((chain, cIdx) => (
-                                            <span key={cIdx} className="text-[10px] font-semibold font-mono bg-emerald-950/40 text-emerald-400 px-2 py-0.5 rounded border border-emerald-900/30">
-                                                ⛓️ {chain}
-                                            </span>
-                                        ))}
-                                    </div>
-
-                                    <p className="text-zinc-400 text-xs leading-relaxed mb-6">{proj.desc}</p>
-                                </div>
-                                <div className="flex flex-wrap gap-1.5 pt-3 border-t border-zinc-900">
-                                    {proj.tech.map((t, i) => (
-                                        <span key={i} className="px-2 py-0.5 rounded text-[10px] font-mono bg-zinc-900 text-zinc-400 border border-zinc-800/60">{t}</span>
-                                    ))}
-                                </div>
-                            </div>
-                        ))}
+                <section id="projects" className="max-w-6xl mx-auto px-6 py-24">
+                    <div className="flex items-end justify-between border-b hairline pb-4 mb-10">
+                        <Reveal>
+                            <p className="text-[11px] eyebrow text-ember mb-2">04 / SELECTED WORK</p>
+                            <h2 className="big-serif text-3xl sm:text-4xl text-parchment font-semibold">Featured Projects</h2>
+                        </Reveal>
                     </div>
-                </Section>
+                    <div className="grid md:grid-cols-2 gap-6">
+                        {list.map((p, idx) => {
+                            const isLastOdd = list.length % 2 === 1 && idx === list.length - 1;
+                            return (
+                                <Reveal
+                                    key={p.name}
+                                    delay={idx * 60}
+                                    className={`card rounded-xl p-6 flex flex-col justify-between group ${isLastOdd ? "md:col-span-2" : ""}`}
+                                >
+                                    <div className={isLastOdd ? "grid sm:grid-cols-2 gap-6" : ""}>
+                                        <div>
+                                            <div className="flex justify-between items-start mb-4">
+                                                <span className="text-[10px] eyebrow chip px-2 py-1 rounded text-ember">{p.type}</span>
+                                                <span className="text-parchmentdim/50 group-hover:text-gold transition-colors sm:hidden"><Icons.Arrow/></span>
+                                            </div>
+                                            <h4 className="big-serif text-xl text-parchment mb-2 group-hover:text-gold transition-colors">{p.name}</h4>
+                                            <div className="flex flex-wrap gap-1.5 mb-3">
+                                                {p.chains.map(c => (
+                                                    <span key={c} className="text-[10px] font-mono px-2 py-0.5 rounded border border-gold/30 text-gold/90">{c}</span>
+                                                ))}
+                                            </div>
+                                            <p className="text-parchmentdim/80 text-sm leading-relaxed mb-6 sm:mb-0">{p.desc}</p>
+                                        </div>
+                                        {isLastOdd && (
+                                            <div className="flex flex-col justify-between">
+                                                <span className="hidden sm:flex justify-end text-parchmentdim/50 group-hover:text-gold transition-colors"><Icons.Arrow/></span>
+                                                <div className="flex flex-wrap gap-1.5 content-end h-full items-end">
+                                                    {p.tech.map(t => (
+                                                        <span key={t} className="px-2 py-0.5 rounded text-[10px] font-mono border border-parchmentdim/20 text-parchmentdim/70">{t}</span>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
+                                    {!isLastOdd && (
+                                        <div className="flex flex-wrap gap-1.5 pt-4 border-t hairline">
+                                            {p.tech.map(t => (
+                                                <span key={t} className="px-2 py-0.5 rounded text-[10px] font-mono border border-parchmentdim/20 text-parchmentdim/70">{t}</span>
+                                            ))}
+                                        </div>
+                                    )}
+                                </Reveal>
+                            );
+                        })}
+                    </div>
+                </section>
             );
         }
 
-        // ===== CONTACT SECTION =====
+        /* ================= CONTACT / FOOTER ================= */
         function Contact() {
             return (
-                <Section id="contact" title="Get In Touch">
-                    <div className="glass-card p-8 rounded-2xl text-center max-w-xl mx-auto space-y-5">
-                        <p className="text-zinc-300 text-sm max-w-md mx-auto">
-                            Let's connect regarding custom architectural design implementations, smart contract auditing tasks, or full-stack DApp development goals.
-                        </p>
-                        <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-2">
-                            <a href="mailto:nikilkandesar209@gmail.com" className="w-full sm:w-auto inline-flex justify-center items-center gap-2 px-5 py-2.5 font-semibold text-zinc-950 bg-zinc-50 hover:bg-white rounded-lg text-xs transition-all shadow-md">
-                                <Icons.Mail /> nikilkandesar209@gmail.com
-                            </a>
-                            <a href="tel:+919970155567" className="w-full sm:w-auto inline-flex justify-center items-center gap-2 px-5 py-2.5 font-semibold text-zinc-300 glass border border-zinc-800 hover:bg-zinc-900/50 rounded-xl text-xs transition-all">
-                                <Icons.Phone /> +91 9970155567
-                            </a>
-                        </div>
-                        <div className="flex justify-center items-center gap-6 pt-4 text-zinc-500 border-t border-zinc-900">
-                            <a href="https://linkedin.com/in/nikhilkandesar" target="_blank" rel="noreferrer" className="hover:text-indigo-400 transition-colors flex items-center gap-1.5 text-xs">
-                                <Icons.Linkedin /> LinkedIn
-                            </a>
-                            <a href="https://github.com/Nikhil-Kandesar" target="_blank" rel="noreferrer" className="hover:text-indigo-400 transition-colors flex items-center gap-1.5 text-xs">
-                                <Icons.Github /> GitHub
-                            </a>
-                        </div>
+                <section id="contact" className="border-t hairline bg-panel">
+                    <div className="max-w-6xl mx-auto px-6 py-24">
+                        <Reveal className="text-center max-w-2xl mx-auto">
+                            <p className="text-[11px] eyebrow text-ember mb-3">05 / GET IN TOUCH</p>
+                            <h2 className="big-serif text-4xl sm:text-5xl text-parchment font-semibold mb-5">Let's build something on-chain.</h2>
+                            <p className="text-parchmentdim/80 text-sm leading-relaxed mb-8">
+                                Open to conversations on smart contract architecture, wallet infrastructure,
+                                security auditing, or full-stack DApp development.
+                            </p>
+                            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-8">
+                                <a href="mailto:nikilkandesar209@gmail.com" className="w-full sm:w-auto inline-flex justify-center items-center gap-2 px-6 py-3 font-semibold text-ink glass-pill hover:brightness-95 rounded-full text-xs tracking-wide uppercase transition-all">
+                                    <Icons.Mail/> nikilkandesar209@gmail.com
+                                </a>
+                                <a href="tel:+919970155567" className="w-full sm:w-auto inline-flex justify-center items-center gap-2 px-6 py-3 font-semibold text-parchment glass-outline rounded-full text-xs tracking-wide uppercase">
+                                    <Icons.Phone/> +91 9970155567
+                                </a>
+                            </div>
+                            <div className="flex justify-center items-center gap-6 text-parchmentdim/70">
+                                <a href="https://linkedin.com/in/nikhilkandesar" target="_blank" rel="noreferrer" className="hover:text-gold transition-colors flex items-center gap-1.5 text-xs">
+                                    <Icons.Linkedin/> LinkedIn
+                                </a>
+                                <a href="https://github.com/Nikhil-Kandesar" target="_blank" rel="noreferrer" className="hover:text-gold transition-colors flex items-center gap-1.5 text-xs">
+                                    <Icons.Github/> GitHub
+                                </a>
+                            </div>
+                        </Reveal>
                     </div>
-                </Section>
+                    <div className="border-t hairline py-6 text-center text-[10px] text-parchmentdim/40 font-mono">
+                        © {new Date().getFullYear()} Nikhil Kandesar. Built with React + Tailwind.
+                    </div>
+                </section>
             );
         }
 
-        // ===== MAIN WRAPPER =====
+        /* ================= APP ================= */
         function App() {
             return (
-                <div className="relative min-h-screen bg-zinc-950 text-zinc-50 selection:bg-indigo-500/20 selection:text-indigo-300">
-                    <Navbar />
+                <div className="relative min-h-screen">
+                    <Navbar/>
                     <main>
-                        <Hero />
-                        <About />
-                        <Skills />
-                        <Experience />
-                        <Projects />
-                        <Contact />
+                        <Hero/>
+                        <WhatIDo/>
+                        <About/>
+                        <Skills/>
+                        <Experience/>
+                        <Projects/>
                     </main>
-                    <footer className="py-8 text-center text-[10px] text-zinc-600 border-t border-zinc-900/40 font-mono">
-                        © {new Date().getFullYear()} Nikhil Kandesar. Powered by React + Tailwind + Motion.
-                    </footer>
+                    <Contact/>
                 </div>
             );
         }
 
-        // ===== MOUNT POINT =====
         const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
+        root.render(<App/>);
     </script>
 </body>
 </html>
