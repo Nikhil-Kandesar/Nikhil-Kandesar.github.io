@@ -131,10 +131,6 @@
             hidden: {},
             visible: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } }
         };
-        const scaleUp = {
-            hidden: { opacity: 0, scale: 0.95 },
-            visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }
-        };
 
         // ===== REVEAL ON SCROLL COMPONENT =====
         function Reveal({ children, className = "", delay = 0 }) {
@@ -207,7 +203,7 @@
 
                         <div className="flex items-center gap-3">
                             <a
-                                href="mailto:nikhilkandesar209@gmail.com?subject=Let's Connect&body=Hi Nikhil,%0D%0A%0D%0AI came across your portfolio and would like to discuss..."
+                                href="mailto:nikhilkandesar209@gmail.com?subject=Let's Connect"
                                 className="hidden sm:flex items-center gap-2 px-4 py-2 text-sm font-medium text-zinc-900 bg-zinc-100 rounded-lg hover:bg-white hover:scale-[1.02] transition-all duration-300"
                             >
                                 Get In Touch
@@ -241,7 +237,7 @@
                                         </a>
                                     ))}
                                     <a
-                                        href="mailto:nikhilkandesar209@gmail.com?subject=Let's Connect&body=Hi Nikhil,%0D%0A%0D%0AI came across your portfolio and would like to discuss..."
+                                        href="mailto:nikhilkandesar209@gmail.com?subject=Let's Connect"
                                         className="mt-2 flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium text-zinc-900 bg-zinc-100 rounded-lg"
                                     >
                                         Get In Touch
@@ -300,4 +296,168 @@
                         </motion.p>
 
                         <motion.p
-                    
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.5 }}
+                            className="text-zinc-400 max-w-xl mx-auto mb-8 text-base sm:text-lg"
+                        >
+                            Over 3 years of engineering experience developing secure, high-throughput decentralized protocols and Web3 decentralized applications (DApps) across 15+ blockchain ecosystems.
+                        </motion.p>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.6 }}
+                            className="flex items-center justify-center gap-4"
+                        >
+                            <a href="#projects" className="px-6 py-3 rounded-xl font-medium bg-gradient-to-r from-indigo-500 to-violet-600 text-white hover:opacity-90 shadow-lg shadow-indigo-500/20 hover:scale-[1.02] transition-all">
+                                View Projects
+                            </a>
+                            <a href="#contact" className="px-6 py-3 rounded-xl font-medium glass border border-zinc-800 hover:bg-zinc-900/50 hover:scale-[1.02] transition-all text-zinc-200">
+                                Let's Talk
+                            </a>
+                        </motion.div>
+                    </div>
+                </section>
+            );
+        }
+
+        // ===== PLACEHOLDER SECTIONS FOR STRUCTURE =====
+        function SectionWrapper({ id, title, children }) {
+            return (
+                <section id={id} className="py-24 max-w-6xl mx-auto px-6 border-t border-zinc-900">
+                    <Reveal>
+                        <h2 className="text-3xl font-bold text-zinc-100 tracking-tight mb-12 font-mono flex items-center gap-3">
+                            <span className="text-indigo-500 text-lg">//</span> {title}
+                        </h2>
+                    </Reveal>
+                    {children}
+                </section>
+            );
+        }
+
+        function About() {
+            return (
+                <SectionWrapper id="about" title="About Me">
+                    <div className="grid md:grid-cols-3 gap-8 text-zinc-400">
+                        <div className="md:col-span-2 space-y-4">
+                            <p>I build systems that operate without centralized trust. My background centers entirely around Smart Contract security, high-performance DeFi mechanics, and cross-chain architecture interoperability layers.</p>
+                            <p>Whether optimizing raw gas overhead or developing complex programmatic staking and governance logic, my aim is flawless protocol reliability under real economic stress parameters.</p>
+                        </div>
+                        <div className="glass-card p-6 rounded-2xl flex flex-col justify-center">
+                            <div className="text-indigo-400 font-bold text-4xl mb-1">3+</div>
+                            <div className="text-zinc-300 font-medium text-sm mb-4">Years Web3 Experience</div>
+                            <div className="text-indigo-400 font-bold text-4xl mb-1">15+</div>
+                            <div className="text-zinc-300 font-medium text-sm">Blockchains Integrated</div>
+                        </div>
+                    </div>
+                </SectionWrapper>
+            );
+        }
+
+        function Skills() {
+            const skillCategories = [
+                { title: "Languages", skills: ["Solidity", "Rust", "TypeScript", "Go", "Python"] },
+                { title: "Frameworks & Tools", skills: ["Foundry", "Hardhat", "Ethers.js", "Viem", "Anchor (Solana)"] },
+                { title: "Infrastructure", skills: ["Graph Protocol", "Chainlink", "IPFS", "Docker", "AWS"] }
+            ];
+            return (
+                <SectionWrapper id="skills" title="Core Capabilities">
+                    <div className="grid sm:grid-cols-3 gap-6">
+                        {skillCategories.map((cat, i) => (
+                            <div key={i} className="glass-card p-6 rounded-2xl">
+                                <h3 className="text-zinc-200 font-semibold mb-4 text-base">{cat.title}</h3>
+                                <div className="flex flex-wrap gap-2">
+                                    {cat.skills.map((skill, si) => (
+                                        <span key={si} className="px-3 py-1 rounded-lg text-xs font-mono bg-zinc-900 border border-zinc-800/80 text-zinc-400">
+                                            {skill}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </SectionWrapper>
+            );
+        }
+
+        function Experience() {
+            return (
+                <SectionWrapper id="experience" title="Professional History">
+                    <div className="space-y-8 relative before:absolute before:left-3 before:top-2 before:bottom-2 before:w-[1px] before:bg-zinc-800">
+                        <div className="relative pl-8">
+                            <div className="absolute left-[7px] top-[7px] w-3 h-3 rounded-full bg-indigo-500 ring-4 ring-indigo-950" />
+                            <span className="text-xs font-mono text-indigo-400">2023 - PRESENT</span>
+                            <h3 className="text-zinc-100 font-semibold mt-1 text-lg">Senior Smart Contract Engineer</h3>
+                            <p className="text-zinc-500 text-sm">DeFi Protocol Infrastructure</p>
+                            <p className="text-zinc-400 mt-2 text-sm max-w-2xl">Designed core multi-signature storage vaults and automated liquidity routers yielding optimal routing distributions across multiple active layers.</p>
+                        </div>
+                    </div>
+                </SectionWrapper>
+            );
+        }
+
+        function Projects() {
+            return (
+                <SectionWrapper id="projects" title="Selected Artifacts">
+                    <div className="grid sm:grid-cols-2 gap-6">
+                        <div className="glass-card p-6 rounded-2xl group hover:border-zinc-700 transition-colors">
+                            <div className="flex justify-between items-start mb-4">
+                                <div className="p-2 rounded-xl bg-indigo-500/10 text-indigo-400"><Icons.Shield /></div>
+                                <Icons.ExternalLink />
+                            </div>
+                            <h3 className="text-zinc-100 font-semibold group-hover:text-indigo-400 transition-colors mb-2">Automated AMM Pool Aggregator</h3>
+                            <p className="text-zinc-400 text-sm mb-4">A complete asset router built with Foundry. Optimizes multi-hop conversions over low-tier swap liquidity systems without frontrunning exposure vectors.</p>
+                        </div>
+                        <div className="glass-card p-6 rounded-2xl group hover:border-zinc-700 transition-colors">
+                            <div className="flex justify-between items-start mb-4">
+                                <div className="p-2 rounded-xl bg-violet-500/10 text-violet-400"><Icons.Cube /></div>
+                                <Icons.ExternalLink />
+                            </div>
+                            <h3 className="text-zinc-100 font-semibold group-hover:text-violet-400 transition-colors mb-2">Cross-Chain Asset Bridge</h3>
+                            <p className="text-zinc-400 text-sm mb-4">State lock-and-mint logic powered by localized light clients validating payload parameters accurately.</p>
+                        </div>
+                    </div>
+                </SectionWrapper>
+            );
+        }
+
+        function Contact() {
+            return (
+                <SectionWrapper id="contact" title="Initialize Connection">
+                    <div className="glass-card p-8 rounded-3xl text-center max-w-2xl mx-auto">
+                        <p className="text-zinc-300 mb-6">Looking for architectural input on security dynamics or cross-chain integration projects?</p>
+                        <a href="mailto:nikhilkandesar209@gmail.com" className="inline-flex items-center gap-2 px-6 py-3 font-semibold text-zinc-900 bg-zinc-100 hover:bg-white rounded-xl transition-all">
+                            <Icons.Mail /> Email Me Directly
+                        </a>
+                    </div>
+                </SectionWrapper>
+            );
+        }
+
+        // ===== MAIN APP COMPONENT =====
+        function App() {
+            return (
+                <div className="relative min-h-screen bg-zinc-950 text-zinc-50 selection:bg-indigo-500/30 selection:text-indigo-200">
+                    <Navbar />
+                    <main>
+                        <Hero />
+                        <About />
+                        <Skills />
+                        <Experience />
+                        <Projects />
+                        <Contact />
+                    </main>
+                    <footer className="py-8 text-center text-xs text-zinc-600 border-t border-zinc-900/50 font-mono">
+                        © {new Date().getFullYear()} Nikhil Kandesar. Built securely with React + Tailwind + Motion.
+                    </footer>
+                </div>
+            );
+        }
+
+        // ===== MOUNT TO DOM =====
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
